@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            // Add code to check answers to questions
+            document.addEventListener('DOMContentLoaded', function() {
+
+                // When correct answer is clicked, change color to green
+                let correct = document.querySelector(".correct");
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = "green";
+                    message.innerHTML = "Correct!";
+                });
+
+                // When incorrect answer is clicked, change color to red
+                let incorrects = document.querySelectorAll(".incorrect");
+                for (let i = 0; i < incorrects.length; i++)
+                {
+                    incorrects[i].addEventListener('click', function() {
+                        incorrects[i].style.backgroundColor = "red";
+                        message.innerHTML = "Incorrect!";
+                    });
+                }
+
+                let message = document.querySelector("#message");
+
+                // Check free response submission
+                document.querySelector("#free-button").addEventListener('click', function() {
+                    let input = document.querySelector("input");
+                    let message_free = document.querySelector("#free-message");
+                    if (input.value == "2")
+                    {
+                        input.style.backgroundColor = "green";
+                        message_free.innerHTML = "Correct!";
+                    }
+                    else
+                    {
+                        input.style.backgroundColor = "red";
+                        message_free.innerHTML = "Incorrect!";
+                    }
+
+                })
+
+            });
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <!-- Add multiple choice question here -->
+                <h3>Which is the capital of Greece?</h3>
+                <button class="incorrect">Thessaloniki</button>
+                <button class="incorrect">Santorini</button>
+                <button class="incorrect">Mykonos</button>
+                <button class="correct">Athens</button>
+                <p id="message"></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- Add free response question here -->
+                <h3>How many times has the Olympics been in Greece?</h3>
+                <input type="text">
+                <button id="free-button">Check Answer</button>
+                <p id="free-message"></p>
+
+            </div>
+
+        </div>
+    </body>
+</html>
